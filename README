@@ -1,0 +1,10 @@
+# DynamoDB
+
+## put item
+aws dynamodb put-item --table-name ${TABLE_NAME} --item "attr1={S=${ATTR1}},attr2={S=${ATTR2}}"
+
+## get item
+aws dynamodb get-item --table-name ${TABLE_NAME} --key "attr1={S=${ATTR1}},attr2={S=${ATTR2}}"
+
+## delete item
+aws dynamodb delete-item --table-name ${TABLE_NAME} --key "attr1={S=${ATTR1}},attr2={S=${ATTR2}}"
