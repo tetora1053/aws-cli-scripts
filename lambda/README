@@ -1,0 +1,15 @@
+# Lambda
+
+## list functions name
+### all
+aws lambda list-functions --output json | jq '.Functions[].FunctionName'
+
+### filter
+aws lambda list-functions --query "Functions[?contains(FunctionName, \`${SEARCH_STR}\`)].FunctionName"
+
+## delete function
+### delete by name
+aws lambda delete-function --function-name ${FUNCTION_NAME}
+
+### delete filtered functions
+aws lambda list-functions --query "Functions[?contains(FunctionName, \`${SEARCH_STR}\`)].FunctionName" | jq -r '.[]' | xargs -I{} aws lambda delete-function --function-name {}
