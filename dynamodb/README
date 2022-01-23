@@ -1,0 +1,8 @@
+# DynamoDB
+
+## list tables name
+aws dynamodb list-tables --name ${TABLE_NAME}
+
+## put item
+aws dynamodb put-item --table-name ${TABLE_NAME} --item '{"KEY_1": {"S": "VAL_1"}, "KEY_2": {"N": "2"}, "KEY_3": {"S": "VAL_3"}}'
+
