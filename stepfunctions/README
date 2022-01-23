@@ -1,0 +1,15 @@
+# Step Functions
+
+## list
+### statemachines name
+aws stepfunctions list-state-machines --output json | jq '.stateMachines[].name'
+
+### statemachines filtered
+aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`${SEARCH_STR}\`)].name"
+
+## delete
+### by arn
+aws stepfunctions delete-state-machine --state-machine-arn ${STATEMACHINE_ARN}
+
+### delete filtered functions
+aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`${SEARCH_STR}\`)].stateMachineArn" --output json | jq -r '.[]' | xargs -I{} aws stepfunctions delete-state-machine --state-machine-arn {}
