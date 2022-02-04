@@ -1,0 +1,5 @@
+# CodePipeline
+
+EXEC_STATUS=Succeeded
+PIPELINE_NAME=hoge
+aws codepipeline get-pipeline-state --name ${PIPELINE_NAME} --query "stageStates[].actionStates[? latestExecution.status == \`${EXEC_STATUS}\`].actionName" --output text
