@@ -2,7 +2,7 @@
 
 ## list
 ### statemachines name
-aws stepfunctions list-state-machines --output json | jq '.stateMachines[].name'
+aws stepfunctions list-state-machines --query 'stateMachines[*].name' --output text
 
 ### statemachines filtered
 aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`${SEARCH_STR}\`)].name"
