@@ -1,3 +1,9 @@
+#!/bin/bash
+#
+# インスタンス名を指定して削除
+# Prepare:
+#   export TARGET_INSTANCE_NAME=hoge
+#
 
 INSTANCE_IDS=$(aws ec2 describe-tags --filters \
     "Name=resource-type,Values=instance" \
