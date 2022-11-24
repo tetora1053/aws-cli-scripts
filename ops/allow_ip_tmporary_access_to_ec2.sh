@@ -1,7 +1,11 @@
 #!/bin/bash
 #
-# Create and associate SG which allows specified IP to access to specified EC2 instance
-# Delete the SG after 1 hour automatically
+# Create and associate SG which allows specified IP to access to the specified EC2 instance.
+# The SG created by this script must be deleted later.
+#
+# Usage:
+#   export INSTANCE_NAME=hoge
+#   export IP_ADDR=xxx.xxx.xxx.xxx
 #
 
 VPC_ID=$(aws ec2 describe-vpcs \
@@ -13,7 +17,7 @@ VPC_ID=$(aws ec2 describe-vpcs \
 # create SecurityGroup
 SG_ID=$(
   aws ec2 create-security-group \
-    --group-name will-be-deleted-automatically \
+    --group-name must-be-deleted \
     --description tmp \
     --vpc-i ${VPC_ID} \
     --query 'GroupId' \
@@ -52,6 +56,3 @@ CURRENT_SG_IDS=$(
 aws ec2 modify-instance-attribute \
   --instance-id ${INSTANCE_ID} \
   --groups ${CURRENT_SG_IDS} ${SG_ID}
-
-# TODO: delete sg automatically
-
