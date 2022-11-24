@@ -2,6 +2,7 @@
 #
 # Create and associate SG which allows specified IP to access to the specified EC2 instance.
 # The SG created by this script must be deleted later.
+#   delete_tmp_sg.sh
 #
 # Usage:
 #   export INSTANCE_NAME=hoge
