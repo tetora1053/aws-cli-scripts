@@ -1,0 +1,14 @@
+---
+users:
+  tetora:
+    uid: 1000
+    groups: "tetora-group"
+
+  moiji:
+    uid: 1010
+    groups: ""
+
+groups:
+  tetora-group:
+    gid: 1000
+    members: "tetora,moiji"
