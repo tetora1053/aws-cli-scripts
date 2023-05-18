@@ -1,4 +1,4 @@
-name: moc(name)
+name: 1-moc(name)
 run-name: 1-moc(run-name)
 
 # on dispatch and on push to delete_orphan_instances
