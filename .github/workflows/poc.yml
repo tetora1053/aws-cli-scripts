@@ -1,4 +1,4 @@
-name: poc
+name: moc
 run-name: poc
 
 # on dispatch and on push to delete_orphan_instances
