@@ -1,0 +1,22 @@
+name: 10. moc(name)
+run-name: moc(run-name)
+
+# on dispatch and on push to delete_orphan_instances
+on:
+  push:
+    branches:
+      - feat/github-actions
+  workflow_dispatch:
+
+jobs:
+  poc-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Repository
+        uses: actions/checkout@v3
+
+      - name: Execute Script
+        run: |
+          cd gha_scripts
+          bash poc.sh
