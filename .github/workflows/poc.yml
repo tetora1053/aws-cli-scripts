@@ -18,5 +18,4 @@ jobs:
 
       - name: Execute Script
         run: |
-          cd gha_scripts
-          bash poc.sh
+          echo "hello world, this is a poc"
