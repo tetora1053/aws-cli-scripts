@@ -18,17 +18,3 @@ jobs:
       - name: run echo goodbye world
         run: |
           echo "goodbye world"
-
-git-commit-and-push-for-poc() {
-  current_branch=$(git branch --show-current)
-  git add .
-  git commit -m "poc"
-  if [[ $current_branch != "master" && $current_branch != "main" ]]; then
-    # リモートブランチが存在しない場合は作成
-    git fetch origin $current_branch
-    if [[ $? -ne 0 ]]; then
-      git push --set-upstream origin HEAD
-    fi
-  fi
-  git push origin $current_branch
-}
