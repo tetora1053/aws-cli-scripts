@@ -4,7 +4,7 @@ run-name: 1. poc
 # on dispatch and on push to delete_orphan_instances
 on:
   pull_request:
-    types: [opened, synchronize, labeled, unlabeled]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
 
 jobs:
   poc-job:
