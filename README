@@ -1,5 +1,4 @@
 # DynamoDB
-# test
 
 ## put item
 aws dynamodb put-item --table-name ${TABLE_NAME} --item "attr1={S=${ATTR1}},attr2={S=${ATTR2}}"
