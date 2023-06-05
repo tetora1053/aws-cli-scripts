@@ -4,7 +4,7 @@ run-name: 1. poc
 # on dispatch and on push to delete_orphan_instances
 on:
   pull_request:
-    types: [opened, synchronize, labeled]
+    types: [opened, synchronize, labeled, unlabeled]
 
 jobs:
   poc-job:
@@ -13,4 +13,22 @@ jobs:
     steps:
       - name: run echo hello world
         run: |
-          echo "hello world, this is a poc"
+          echo "hello world"
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == true
+      - name: run echo goodbye world
+        run: |
+          echo "goodbye world"
+
+git-commit-and-push-for-poc() {
+  current_branch=$(git branch --show-current)
+  git add .
+  git commit -m "poc"
+  if [[ $current_branch != "master" && $current_branch != "main" ]]; then
+    # リモートブランチが存在しない場合は作成
+    git fetch origin $current_branch
+    if [[ $? -ne 0 ]]; then
+      git push --set-upstream origin HEAD
+    fi
+  fi
+  git push origin $current_branch
+}
