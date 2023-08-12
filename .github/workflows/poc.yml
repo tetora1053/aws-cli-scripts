@@ -6,6 +6,8 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, labeled, unlabeled]
 
+runs-on: [self-hosted, linux, x64]
+
 jobs:
   poc-job:
     runs-on: ubuntu-latest
