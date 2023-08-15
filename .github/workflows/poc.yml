@@ -1,24 +1,33 @@
-name: 1. poc
-run-name: 1. poc
+# This is a basic workflow to help you get started with Actions
 
-# on dispatch and on push to delete_orphan_instances
+name: check
+
+# Controls when the workflow will run
 on:
   pull_request:
-    types: [opened, synchronize, reopened, labeled, unlabeled]
+    branches: [ "master" ]
 
-
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  poc-job:
-    runs-on: [self-hosted, linux, x64]
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: run echo hello world
-        if: github.event_name == 'pull_request' && github.event.pull_request.draft == true
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
         run: |
-          echo "hello world"
-      - name: run echo goodbye world
-        run: |
-          echo "goodbye world"
-      - name: fail test
-        # run: exit 1
-        run: exit 0
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+      - name: check
+        run: ls | grep fuga
